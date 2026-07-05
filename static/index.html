@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdaptCode — Learn Python by Building It</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ── Board ─────────────────────────────────────────────────────── -->
+  <div id="board-wrap">
+    <canvas id="board" width="700" height="700"></canvas>
+    <div id="controls-hint">Arrow keys to move &nbsp;•&nbsp; H = hint &nbsp;•&nbsp; R = restart</div>
+  </div>
+
+  <!-- ── Sidebar ───────────────────────────────────────────────────── -->
+  <div id="sidebar">
+
+    <div id="problem-picker">
+      <label for="problem-select">Problem</label>
+      <select id="problem-select"></select>
+    </div>
+
+    <h2 id="problem-name">Loading…</h2>
+    <p id="problem-desc" class="muted"></p>
+
+    <div id="collected-box">
+      <div class="label">Collected so far:</div>
+      <div id="collected-list" class="muted">(none yet)</div>
+    </div>
+
+    <div id="progress-bar-wrap">
+      <div id="progress-bar-fill"></div>
+      <span id="progress-label">0/0</span>
+    </div>
+
+    <div id="panel-slot"></div>
+
+    <div id="suggestion-box" class="hidden"></div>
+
+    <div id="stats-box">
+      <div class="label">Stats</div>
+      <div class="stat-row"><span>Success rate:</span><span id="stat-success">0%</span></div>
+      <div class="stat-row"><span>Games played:</span><span id="stat-runs">0</span></div>
+      <div class="stat-row"><span>Completed:</span><span id="stat-completed">0</span></div>
+      <div class="stat-row"><span>Hints this run:</span><span id="stat-hints">0</span></div>
+    </div>
+
+    <div id="bottom-controls">
+      <button id="btn-pre" class="btn btn-normal">📝 Pre-Questionnaire</button>
+      <button id="btn-post" class="btn btn-normal">📝 Post-Questionnaire</button>
+
+      <div id="topic-row">
+        <input id="topic-input" type="text" placeholder="Enter problem topic...">
+        <button id="btn-generate" class="btn btn-green">⚡ Generate</button>
+      </div>
+
+      <button id="btn-hint" class="btn btn-hint">💡 Hint (H)</button>
+    </div>
+  </div>
+
+  <!-- ── Complete overlay ──────────────────────────────────────────── -->
+  <div id="complete-overlay" class="overlay hidden">
+    <div class="overlay-panel">
+      <h1>COMPLETE!</h1>
+      <div id="complete-stats"></div>
+      <button id="btn-restart" class="btn btn-green">[ R ] Restart</button>
+    </div>
+  </div>
+
+  <!-- ── Questionnaire modal ───────────────────────────────────────── -->
+  <div id="quest-overlay" class="overlay hidden">
+    <div class="overlay-panel quest-panel">
+      <button id="quest-close" class="quest-close">✕</button>
+      <h2 id="quest-title"></h2>
+      <div id="quest-progress" class="muted"></div>
+      <form id="quest-form"></form>
+      <div id="quest-error" class="quest-error hidden"></div>
+      <div class="quest-nav">
+        <button type="button" id="quest-back" class="btn btn-normal hidden">&lt; Back</button>
+        <button type="button" id="quest-next" class="btn btn-green">Next &gt;</button>
+      </div>
+      <div class="muted quest-esc">Esc to close without submitting</div>
+    </div>
+  </div>
+
+  <!-- ── Toast ─────────────────────────────────────────────────────── -->
+  <div id="toast" class="hidden"></div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
